@@ -10,13 +10,13 @@ const validacion = () => {
   }
 };
 //primer pregunta para iniciar el juego
-let opcion = confirm("te animas a enfrentar a loki?");
+let opcion = confirm("te animas a enfrentar al vengador?");
 console.log(opcion);
 //este if valida continuar el juego despues de una partida
 if (opcion) {
   while (opcion) {
     //usuario ingresa el dato para iniciar
-    let adversario = prompt("ìngrese su heroe para enfrentar a loki");
+    let adversario = prompt("ìngrese su heroe para enfrentar al vengador").toLowerCase();
     //verifico que sea un dato valido
     if (adversario != "esc" && adversario != "" && adversario != null) {
       juegoMarvel(adversario);
@@ -33,40 +33,81 @@ if (opcion) {
 }
 //funcion para jugar, switch para definir los casos
 function juegoMarvel(adversario) {
-  //la variable loki cambia dependiendo del dato ingrsado por usuario
-  let loki = "";
+  //la variable vengador cambia dependiendo del dato ingrsado por usuario
+  let vengador = "";
   switch (adversario) {
-    case "ironMan":
-      loki = "magneto";
-      console.log(`${loki} vs ${adversario}`);
-      alert(`loki te enfrentara disfrazado de ${loki}`);
+    case "ultron":
+      vengador = "IronMan";
+      console.log(`${vengador} vs ${adversario}`);
+      alert(` ${vengador} fue el encargado de humillarte`);
       break;
 
-    case "thor":
-      loki = "odin";
-      console.log(`${loki} vs ${adversario}`);
-      alert(`loki te enfrentara disfrazado de ${loki}`);
+    case "loki":
+      vengador = "Thor";
+      console.log(`${vengador} vs ${adversario}`);
+      alert(` ${vengador} fue el encargado de humillarte`);
       break;
 
-    case "hulk":
-      loki = "thanos";
-      console.log(`${loki} vs ${adversario}`);
-      alert(`loki te enfrentara disfrazado de ${loki}`);
+    case "abominacion":
+      vengador = "Hulk";
+      console.log(`${vengador} vs ${adversario}`);
+      alert(` ${vengador} fue el encargado de humillarte`);
       break;
-    case "spiderMan":
-      loki = "venom";
-      console.log(`${loki} vs ${adversario}`);
-      alert(`loki te enfrentara disfrazado de ${loki}`);
+    case "venom":
+      vengador = "SpiderMan";
+      console.log(`${vengador} vs ${adversario}`);
+      alert(` ${vengador} fue el encargado de humillarte`);
       break;
-    case "capitan america":
-      loki = "soldado del invierno";
-      console.log(`${loki} vs ${adversario}`);
-      alert(`loki te enfrentara disfrazado de ${loki}`);
+    case "craneo rojo":
+      vengador = "Capitan America";
+      console.log(`${vengador} vs ${adversario}`);
+      alert(` ${vengador} fue el encargado de humillarte`);
       break;
     default:
-      loki = "loki";
-      console.log(`${loki} vs ${adversario}`);
-      alert(`loki te humillara con su poder`);
+      vengador = "Thanos";
+      console.log(`${vengador} vs ${adversario}`);
+      alert(`Tu Victoria no durará por mucho tiempo...`);
       break;
   }
+}
+
+//creo un array de objetos con 3 elementos
+const heroes = [
+  {
+    nombre: "IronMan",
+    superPoder: "Millonario",
+    ciudad: "Manhattan",
+  },
+  {
+    nombre: "Thor",
+    superPoder: "Control de rayos",
+    ciudad: "Asgard",
+  },
+  {
+    nombre: "Hulk",
+    superPoder: "Dayton",
+    ciudad: "Fuerza bruta",
+  },
+  {
+    nombre: "SpiderMan",
+    superPoder: "Queens",
+    ciudad: "Sentido aracnido",
+  },
+  {
+    nombre: "Capitan America",
+    superPoder: "Brooklyn ",
+    ciudad: "Super Fuerza",
+  },
+  {
+    nombre: "Thanos",
+    superPoder: "Intelecto superior",
+    ciudad: "Titán",
+  },
+];
+
+for (let i = 0; i < heroes.length; i++) {
+  console.log("==================");
+  console.log("nombre: " + heroes[i].nombre);
+  console.log("superPoder: " + heroes[i].superPoder);
+  console.log("ciudad: " + heroes[i].ciudad);
 }
