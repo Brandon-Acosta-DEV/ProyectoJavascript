@@ -1,152 +1,117 @@
-//creo un array de objetos con 3 elementos
-const heroes = [
-  {
-    nombre: "IronMan",
-    superPoder: "Millonario",
-    ciudad: "Manhattan",
-  },
-  {
-    nombre: "Thor",
-    superPoder: "Control de rayos",
-    ciudad: "Asgard",
-  },
-  {
-    nombre: "Hulk",
-    superPoder: "Dayton",
-    ciudad: "Fuerza bruta",
-  },
-  {
-    nombre: "SpiderMan",
-    superPoder: "Queens",
-    ciudad: "Sentido aracnido",
-  },
-  {
-    nombre: "Capitan America",
-    superPoder: "Brooklyn ",
-    ciudad: "Super Fuerza",
-  },
-  {
-    nombre: "Thanos",
-    superPoder: "Intelecto superior",
-    ciudad: "Titán",
-  },
-];
+const contenedorProductos = document.getElementById("contenedor-productos");
 
-const personajes = [
-  {
-    nombre: "ultron",
-  },
-  {
-    nombre: "loki",
-  },
-  {
-    nombre: "abominacion",
-  },
-  {
-    nombre: "venom",
-  },
-  {
-    nombre: "craneo rojo",
-  },
-  {
-    nombre: "Thanos",
-  },
-];
+const contenedorCarrito = document.getElementById("carrito-contenedor");
 
-const elegirPeleador = () => {
-  let mensaje = `ìngrese su heroe para enfrentar al vengador`;
-  personajes.forEach((value, index) => {
-    mensaje += `
-      ${index + 1} - ${value.nombre} 
-  `;
-  });
+const botonVaciar = document.getElementById("vaciar-carrito");
+//MODIFICAR LOS CONTADORES
+const contadorCarrito = document.getElementById("contadorCarrito");
 
-  return parseInt(prompt(mensaje));
-};
+//CALCULAR EL TOTAL
+const cantidad = document.getElementById("cantidad");
+const precioTotal = document.getElementById("precioTotal");
+const cantidadTotal = document.getElementById("cantidadTotal");
 
-for (let i = 0; i < heroes.length; i++) {
-  console.log("==================");
-  console.log("nombre: " + heroes[i].nombre);
-  console.log("superPoder: " + heroes[i].superPoder);
-  console.log("ciudad: " + heroes[i].ciudad);
-}
+let carrito = [];
 
-var psj = ["ultron", "loki", "abominacion", "venom", "craneo rojo", "Thanos"];
-
-psj.forEach((value, index) => {
-  console.log("value", value);
-  console.log("index", index);
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("carrito")) {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+    actualizarCarrito();
+  }
+});
+//OPCION DE VACIAR CARRITO
+botonVaciar.addEventListener("click", () => {
+  carrito.length = 0;
+  actualizarCarrito();
 });
 
-//validacion para continuar jugando o abandonar el juego
-const validacion = () => {
-  let seguirJugando = confirm("quiere seguir jugando?");
-  if (seguirJugando) {
-    alert("Volviendo a pelear");
-    return seguirJugando;
+//INYECTO EL HTML
+stockProductos.forEach((producto) => {
+  const div = document.createElement("div");
+  div.classList.add("producto");
+  div.innerHTML = `
+    <img src=${producto.img} alt= "">
+    <h3>${producto.nombre}</h3>
+    <p>${producto.desc}</p>
+    <p class="precioProducto">Precio:$ ${producto.precio}</p>
+    <a class="boton-enlace" href="${producto.wapp}" target="_blank">Agendar por Whatsapp</a> <i class="bi bi-whatsapp"></i>
+    <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
+    `;
+  contenedorProductos.appendChild(div);
+
+  //LUEGO DE QUE INSERTEMOS EL HTML EN EL DOM:
+  const boton = document.getElementById(`agregar${producto.id}`);
+  //Por cada elemento de mi array, creo un div, lo cuelgo, le pongo un id particular, una vez colgado
+  //le hago un get element by id (el de agregar) Obtengo el elemento y a dicho elemento le agregamos
+  //el add event listener
+
+  boton.addEventListener("click", () => {
+    //esta funcion ejecuta el agregar el carrito con la id del producto
+    agregarAlCarrito(producto.id);
+    //
+  });
+});
+
+//AGREGAR AL CARRITO
+const agregarAlCarrito = (prodId) => {
+  //PARA AUMENTAR LA CANTIDAD Y QUE NO SE REPITA
+  const existe = carrito.some((prod) => prod.id === prodId); //comprobar si el elemento ya existe en el carro
+
+  if (existe) {
+    //SI YA ESTÁ EN EL CARRITO, ACTUALIZAMOS LA CANTIDAD
+    const prod = carrito.map((prod) => {
+      //creamos un nuevo arreglo e iteramos sobre cada curso y cuando
+      // map encuentre cual es el igual al que está agregado, le suma la cantidad
+      if (prod.id === prodId) {
+        prod.cantidad++;
+      }
+    });
   } else {
-    alert("Saliendo del programa");
-    return seguirJugando;
+    //EN CASO DE QUE NO ESTÉ, AGREGAMOS EL CURSO AL CARRITO
+    const item = stockProductos.find((prod) => prod.id === prodId); //Trabajamos con las ID
+    //Una vez obtenida la ID, lo que haremos es hacerle un push para agregarlo al carrito
+    carrito.push(item);
   }
+  //Va a buscar el item, agregarlo al carrito y llama a la funcion actualizarCarrito, que recorre
+  //el carrito y se ve.
+  actualizarCarrito();
 };
-//primer pregunta para iniciar el juego
-let opcion = confirm("te animas a enfrentar al vengador?");
-console.log(opcion);
-//este if valida continuar el juego despues de una partida
-if (opcion) {
-  while (opcion) {
-    //usuario ingresa el dato para iniciar
-    let adversario = elegirPeleador();
-    //verifico que sea un dato valido
-    if (adversario != "esc" && adversario != "" && adversario != null) {
-      juegoMarvel(adversario);
-      opcion = validacion();
-    } else {
-      //aviso que el dato no es valido y vuelvo a preguntar
-      alert("dato invalido debilucho");
-      opcion = validacion();
-    }
-  }
-} else {
-  //si el dato "opcion" es false abandona el juego
-  alert("Abandonando el juego");
-}
-//funcion para jugar, switch para definir los casos
-function juegoMarvel(adversario) {
-  //la variable vengador cambia dependiendo del dato ingrsado por usuario
-  let vengador = "";
-  switch (adversario) {
-    case "ultron":
-      vengador = "IronMan";
-      console.log(`${vengador} vs ${adversario}`);
-      alert(` ${vengador} fue el encargado de humillarte`);
-      break;
+//agregarAlCarrito(1) //Le pasamos el ID por parametro. Tenemos que asigarle como evento esta funcion al boton
+//con el id de su producto correspondiente
 
-    case isNaN("loki"):
-      vengador = "Thor";
-      console.log(`${vengador} vs ${adversario}`);
-      alert(` ${vengador} fue el encargado de humillarte`);
-      break;
+const eliminarDelCarrito = (prodId) => {
+  const item = carrito.find((prod) => prod.id === prodId);
 
-    case "abominacion":
-      vengador = "Hulk";
-      console.log(`${vengador} vs ${adversario}`);
-      alert(` ${vengador} fue el encargado de humillarte`);
-      break;
-    case "venom":
-      vengador = "SpiderMan";
-      console.log(`${vengador} vs ${adversario}`);
-      alert(` ${vengador} fue el encargado de humillarte`);
-      break;
-    case "craneo rojo":
-      vengador = "Capitan America";
-      console.log(`${vengador} vs ${adversario}`);
-      alert(` ${vengador} fue el encargado de humillarte`);
-      break;
-    default:
-      vengador = "Thanos";
-      console.log(`${vengador} vs ${adversario}`);
-      alert(`Tu Victoria no durará por mucho tiempo...`);
-      break;
-  }
-}
+  const indice = carrito.indexOf(item); //Busca el elemento q yo le pase y nos devuelve su indice.
+
+  carrito.splice(indice, 1); //Le pasamos el indice de mi elemento ITEM y borramos un elemento
+  actualizarCarrito();
+  document.querySelector("carrito");
+};
+
+const actualizarCarrito = () => {
+  //LOS APPENDS SE VAN ACUMULANDO CON LO QE HABIA ANTES
+  contenedorCarrito.innerHTML = ""; //Cada vez que yo llame a actualizarCarrito, lo primero q hago
+  //es borrar el nodo. Y despues recorro el array lo actualizo de nuevo y lo rellena con la info actualizado
+
+  //Por cada producto creamos un div con esta estructura y le hacemos un append al contenedorCarrito (el modal)
+  carrito.forEach((prod) => {
+    const div = document.createElement("div");
+    div.className = "productoEnCarrito";
+    div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>Precio:$${prod.precio}</p>
+        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        `;
+
+    contenedorCarrito.appendChild(div);
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  });
+  contadorCarrito.innerText = carrito.length; // actualizamos con la longitud del carrito.
+  document.querySelector("carrito");
+  precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0);
+  //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
+  //empezando en 0.
+};
