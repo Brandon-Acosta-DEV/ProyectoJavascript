@@ -11,14 +11,13 @@
   max-width: 1320px;
 }
 
+.container-card {
+  height: 20rem;
+}
+
 /* body */
 body {
   font-family: "Roboto", sans-serif;
-}
-
-img {
-  width: 100%;
-  margin-bottom: 10px;
 }
 
 header {
@@ -38,9 +37,8 @@ h1 {
   font-size: 50px;
 }
 
-p {
-  line-height: 1.8;
-  color: rgb(255, 121, 135);
+a {
+  text-decoration: none;
 }
 
 /* navbar */
@@ -52,39 +50,71 @@ p {
   width: 10rem;
 }
 
-.navbar {
-}
-
 .nav-link {
   background-color: white;
   margin: 1rem;
   color: rgb(255, 121, 135);
 }
 
-/* carrito */
-#boton-carrito {
-  border: none;
-  color: rgb(255, 121, 135);
-  font-size: 30px;
-  background-color: white;
-  border-radius: 50%;
-  transition: all 0.3s;
-}
-#boton-carrito:hover {
-  cursor: pointer;
-  color: white;
-  background-color: rgb(222, 76, 138);
-}
-#boton-carrito:focus {
-  outline: none;
+/* index */
+.carousel-inner {
+  height: 30rem;
 }
 
-#contenedor-productos {
-  max-width: 1200px;
-  margin: 60px auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.img__index {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+}
+
+.card-group {
+  margin: 5rem 0 5rem 0;
+}
+
+.index-card {
+  text-align: center;
+  border-style: none;
+}
+
+.card__icon {
+  height: 8rem;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-text {
+  color: white;
+  text-align: center;
+}
+
+.card-footer {
+  border-style: none;
+}
+
+/* Servicio */
+.box-serv {
+  margin: 1rem 0 1rem 0;
+  border-style: double;
+  border-color: rgb(233 224 224 / 85%);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: rgb(233 224 224 / 85%);
+}
+
+.img__serv {
+  height: 15rem;
+}
+
+.serv-card {
+  border-style: none;
+}
+
+.card-fondo {
+  background-color: rgb(255, 121, 135);
 }
 
 /* tarjetas */
@@ -98,6 +128,17 @@ p {
   display: flex;
   flex-direction: column;
 }
+
+.img__pto {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.descProducto {
+  line-height: 1.8;
+  color: rgb(255, 121, 135);
+}
+
 .precioProducto {
   font-weight: 700;
   color: black;
@@ -124,6 +165,12 @@ p {
   outline: none;
 }
 
+.botons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .boton-agregar {
   background-color: rgb(255, 121, 135);
   color: white;
@@ -146,8 +193,8 @@ p {
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   transition: all 0.5s;
   opacity: 0;
@@ -220,4 +267,71 @@ p {
 }
 .boton-eliminar:focus {
   outline: none;
+}
+
+/* carrito */
+#boton-carrito {
+  border: none;
+  color: rgb(255, 121, 135);
+  font-size: 30px;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+#boton-carrito:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(222, 76, 138);
+}
+#boton-carrito:focus {
+  outline: none;
+}
+
+#contenedor-productos {
+  max-width: 1200px;
+  margin: 60px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* footer */
+
+.footer-icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: rgb(233 224 224 / 85%);
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icons-img {
+  width: 5rem;
+}
+
+.icons-btn {
+  background-color: rgb(222, 76, 138);
+}
+.icons-btn:hover {
+  cursor: pointer;
+  color: rgb(222, 76, 138);
+  background-color: white;
+}
+.icons-btn:focus {
+  cursor: pointer;
+  color: rgb(222, 76, 138);
+  background-color: white;
+}
+
+.dropdown-menu {
+  background-color: rgb(222, 76, 138);
+}
+
+.dropdown-item {
+  color: white;
 }

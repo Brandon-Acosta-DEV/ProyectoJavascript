@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./img/LogoNails.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>TerceraEntregaProyectoFinal</title>
+    <title>M.Nails.Uy</title>
   </head>
   <body>
     <header>
@@ -25,9 +26,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-link" href="./index.html">Inicio</a>
-                <a class="nav-link" href="./pages/servicio.html">Servicio</a>
-                <a class="nav-link" href="./pages/quienesSomos.html">¿Quienes Somos?</a>
-                <a class="nav-link" href="./pages/contacto.html">Contacto</a>
+                <a class="nav-link" href="./pages/servicios.html">Servicios</a>
                 <a class="nav-link" href="./pages/productos.html">Productos</a>
               </div>
             </div>
@@ -35,7 +34,134 @@
         </nav>
       </div>
     </header>
-    <script src="./javascript/index.js"></script>
+
+    <section>
+      <p class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+      </p>
+
+      <p class="placeholder-wave">
+        <span class="placeholder col-12"></span>
+      </p>
+    </section>
+
+    <div id="carouselExampleCaptions" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="img__index" src="./img/fondoManoss.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+        <div class="carousel-item">
+          <img class="img__index" src="./img/fondoPiess.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+        <div class="carousel-item">
+          <img class="img__index" src="./img/fondoDepilacion.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block"></div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <section>
+      <p class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+      </p>
+
+      <p class="placeholder-wave">
+        <span class="placeholder col-12"></span>
+      </p>
+    </section>
+
+    <section class="container container-card">
+      <div class="card-group">
+        <div class="index-card card">
+          <a href="./pages/servicio.html" target="_blank" rel="noopener noreferrer">
+            <img class="card__icon" src="./img/esmalte-de-unas.png" class="card-img-top" alt="..." />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Servicios</h5>
+            <p class="card-text">Detallado de nuestros servicios</p>
+          </div>
+          <div class="card-footer">
+            <a href="./pages/servicio.html" target="_blank" rel="noopener noreferrer">
+              <small class="text-muted">Saber más</small>
+            </a>
+          </div>
+        </div>
+        <div class="index-card card">
+          <a href="https://www.instagram.com/m.nails.uy/" target="_blank" rel="noopener noreferrer">
+            <img class="card__icon" src="./img/instagram.png" class="card-img-top" alt="..." />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Instagram</h5>
+            <p class="card-text">Nuestra red principal</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://www.instagram.com/m.nails.uy/" target="_blank" rel="noopener noreferrer">
+              <small class="text-muted">Ir a nuestra red</small>
+            </a>
+          </div>
+        </div>
+        <div class="index-card card">
+          <a href="./pages/productos.html" target="_blank" rel="noopener noreferrer">
+            <img class="card__icon" src="./img/calendario.png" class="card-img-top" alt="..." />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Domicilio</h5>
+            <p class="card-text">¡Agendate con día y hora!</p>
+          </div>
+          <div class="card-footer">
+            <a href="./pages/productos.html" target="_blank" rel="noopener noreferrer">
+              <small class="text-muted">Ver precios</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+      </p>
+
+      <p class="placeholder-wave">
+        <span class="placeholder col-12"></span>
+      </p>
+    </section>
+
+    <footer>
+      <div class="container footer-icons">
+        <div class="icons">
+          <a class="navbar-brand" href="./index.html"> <img src="./img/LogoNails.jpg" alt="m.nails.uy logo" class="logo" /></a>
+        </div>
+        <div class="icons">
+          <a target="_blank" href="https://wa.me/93521559"><img class="icons-img" src="./img/whatsapp.png" alt="Logo de whatsapp" ; /></a>
+          <a target="_blank" href="https://www.instagram.com/m.nails.uy/"><img class="icons-img" src="./img/instagram.png" alt="Logo de instagram" ; /></a>
+        </div>
+        <div class="icons dropdown">
+          <button class="icons-btn btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Paginas</button>
+          <ul class="dropdown-menu">
+            <li><a class="icons-link dropdown-item" href="index.html">Index</a></li>
+            <li><a class="dropdown-item" href="./pages/servicios.html">Servicios</a></li>
+            <li><a class="dropdown-item" href="./pages/productos.html">Productos</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
